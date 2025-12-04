@@ -1,0 +1,38 @@
+@plugin "@tailwindcss/typography";
+
+/* 
+ * CSS Isolation Layer - Kompletter Reset
+ * Blockiert ALLE externen Styles, erlaubt nur Font-Vererbung
+ */
+
+/* @layer base sorgt dafür, dass Tailwind-Utilities höhere Priorität haben */
+@layer base {
+  .hermine-chat-widget,
+  .hermine-chat-widget *,
+  .hermine-chat-widget *::before,
+  .hermine-chat-widget *::after {
+    /* Kompletter Reset aller Properties */
+    all: revert-layer;
+
+    /* Font wird von der Host-Website übernommen */
+    font-family: inherit !important;
+  }
+
+  /* Basis-Styles für den Container */
+  .hermine-chat-widget {
+    display: block;
+    box-sizing: border-box;
+    font-size: 16px;
+    line-height: 1.5;
+    color: #000;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  /* Box-sizing für alle Elemente */
+  .hermine-chat-widget *,
+  .hermine-chat-widget *::before,
+  .hermine-chat-widget *::after {
+    box-sizing: border-box;
+  }
+}
